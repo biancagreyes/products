@@ -1,0 +1,57 @@
+th, td {
+  text-align: center;
+}
+
+th {
+  background-color: #293956;
+  color: white;
+}
+
+.tbl1 {
+  width: 400px;
+}
+
+.tbl2 {
+  width: 300px;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.sectionHeader {
+  font-family: gotham_mediumregular, sans-serif;
+  font-size: 14px;
+  text-align: center;
+  color: #4a6b93;
+  margin-bottom: 30px;
+}
+
+  .sectionHeader .header {
+    font-size: 26px;
+  }
+
+span.header {
+  font-family: civita_mediumregular, serif;
+  font-size: 24px;
+  background-color: #FFF;
+  position: relative;
+  z-index: 50;
+  padding: 0 9px 0 9px;
+}
+
+hr.rule1 {
+  background-color: #FFF;
+  position: absolute;
+  z-index: 1;
+  margin-top: -19px;
+}
+
+.rule1.experience {
+  left: 26%;
+  right: 26%;
+  min-width: 250px;
+  border-top: 2px solid red;
+}

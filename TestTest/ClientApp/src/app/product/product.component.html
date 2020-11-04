@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="sectionHeader">
+    <span class="header">
+      <em>Bianca's Ice Cream Inventory</em>
+    </span>
+    <hr class="rule1 experience" />
+
+  </div>
+
+  <form [formGroup]="productForm" (ngSubmit)="onFormSubmit(productForm.value)">
+
+    <table *ngIf="isAuthenticated | async">
+      <tr>
+        <td class="tbl1">
+          <input formControlName="ProductName" matTooltip="Enter Product Name" matInput placeholder="Product Name">
+        </td>
+        <td class="tbl1">
+          <span>Product Type</span><br />
+          <input type="radio" formControlName="ProductType" value="R"> Regular
+          <input type="radio" formControlName="ProductType" value="S"> Special
+        </td>
+        <td class="tbl1">
+          <input type="number" formControlName="ProductPrice" matTooltip="Enter Product Price" matInput placeholder="Product Price">
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td class="content-center">
+          <button type="submit" mat-raised-button color="accent" matTooltip="Click Submit Button" [disabled]="!productForm.valid">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;
+          <button type="reset" mat-raised-button color="accent" matTooltip="Click Reset Button" (click)="resetForm()">Reset</button>
+        </td>
+        <td>
+          <p *ngIf="dataSaved" style="color:rgb(0, 128, 0);font-size:20px;font-weight:bold" Class="success" align="left">
+            {{message}}
+          </p>
+        </td>
+      </tr>
+    </table>
+    <div *ngIf="!(isAuthenticated | async)" class="sectionP">
+      <span class="p">
+        Welcome to my shop's database! Please sign in to view, create and modify.
+      </span>
+    </div>
+    <table class="table" *ngIf="isAuthenticated | async">
+      <tr ngclass="btn-primary">
+        <th class="tbl2">Product ID</th>
+        <th class="tbl2">Product Name</th>
+        <th class="tbl2">Product Type</th>
+        <th class="tbl2">Product Price</th>
+        <th class="tbl2">Edit</th>
+        <th class="tbl2">Delete</th>
+      </tr>
+      <tr *ngFor="let product of allProducts | async">
+        <td class="tbl2">{{product.ProductId}}</td>
+        <td class="tbl2">{{product.ProductName}}</td>
+        <td class="tbl2">{{product.ProductType}}</td>
+        <td class="tbl2">{{product.ProductPrice | currency: 'PHP':true:'1.2-2'}}</td>
+        <td class="tbl2">
+          <button type="button" class="btn btn-info" matTooltip="Click Edit Button" (click)="loadProductToEdit(product.ProductId)">Edit</button>
+        </td>
+        <td class="tbl2">
+          <button type="button" class="btn btn-danger" matTooltip="Click Delete Button" (click)="deleteProduct(product.ProductId)">Delete</button>
+        </td>
+      </tr>
+
+    </table>
+
+  </form>
+
+</div>

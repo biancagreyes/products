@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="sectionHeader">
+    <span class="header">
+      <em>Sign Up</em>
+    </span>
+    <hr class="rule1 experience" />
+
+  </div>
+
+  <form [formGroup]="signUpForm" (ngSubmit)="onFormSubmit(signUpForm.value)">
+
+    <table>
+      <tr>
+        <td class="tbl1">
+          <input formControlName="Email" matTooltip="Enter Email" matInput placeholder="Email" [pattern]="emailPattern" required>
+        </td>
+        <td class="tbl1">
+          <input formControlName="UserName" matTooltip="Enter Username" matInput placeholder="User Name" required>
+        </td>
+        <td class="tbl1">
+          <input type="password" formControlName="Password" matTooltip="Enter Password" matInput placeholder="Password"  required minlength="6">
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td class="content-center">
+          <button type="submit" mat-raised-button color="accent" matTooltip="Click Submit Button" [disabled]="!signUpForm.valid">Sign Up</button>&nbsp;&nbsp;&nbsp;&nbsp;
+          <button type="reset" mat-raised-button color="accent" matTooltip="Click Reset Button" (click)="resetForm()">Reset</button>
+        </td>
+        <td>
+          <p *ngIf="dataSaved" style="color:rgb(0, 128, 0);font-size:20px;font-weight:bold" Class="success" align="left">
+            {{message}}
+          </p>
+        </td>
+      </tr>
+    </table>
+
+  </form>
+
+</div>
